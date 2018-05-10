@@ -33,4 +33,3 @@ for (var i = 1; i < employees.length; i++) {
 	}
 }
 console.log(sortedList);
-
