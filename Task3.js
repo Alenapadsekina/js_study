@@ -12,8 +12,8 @@ var employees = [{
     age: 40
 }];
 
+var count = 0;
 for (var i = 0; i < employees.length; i++) {
-    var count = 0;
     if (employees[i].name === "J") {
         count++;
         console.log("Yes");
