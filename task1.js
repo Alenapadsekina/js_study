@@ -9,4 +9,5 @@ for (var key in salaries) {
         sum = sum + salaries[key];
     }
 }
+
 console.log(sum);
