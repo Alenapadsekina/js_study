@@ -1,0 +1,32 @@
+span {
+	width: 200px;
+}
+
+span.section {
+	width: 200px;
+	font-family: Arial;
+	font-size: 20px;
+}
+option.dropdown {
+	font-family: Arial;
+	font-size: 20px;
+
+}
+
+select {
+
+	border-top-width: 0 px;
+	border-bottom-width: 0 px;
+	border-left-width: 0 px;
+	border-right-width: 0 px;
+}
+
+button {
+	background: #b1f1ff;
+	font-weight: bolder;
+}
+
+table {
+	width: 200px;
+	text-align: left;
+}
