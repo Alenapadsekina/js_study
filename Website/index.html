@@ -3,8 +3,8 @@
 
 <head>
     <title>Task 4 - WT Teams</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <script href="employeesAvailability.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="employeesAvailability.js"></script>
 </head>
 
 <body>
@@ -13,12 +13,13 @@
 			Teams
 		</span>
     	<span>
-			<select>
-				<option value="" class="dropdown"> </option>
-				<option value="Main releases" class="dropdown">Main releases</option>
-				<option value="IFE/HTML5" class="dropdown">IFE / HTML5</option>
-				<option value="CBC" class="dropdown">CBC</option>
-			</select>
+    			<select id="teams" class="dropdown">
+					<option value="" > </option>
+					<option value="Main releases" onclick="selectTeam()">Main releases</option>
+					<option value="HTML5/IFE" onclick="selectTeam()">IFE / HTML5</option>
+					<option value="CBC" onclick="selectTeam()">CBC</option>
+				</select>
+
 		</span>
     </span>
     <span class="members">
@@ -26,21 +27,17 @@
 			Members
 		</span>
     	<span class="section">
-			<select>
-				<option value=""> </option>
-				<option value="Alena Padsekina" class="dropdown">Alena Padsekina</option>
-				<option value="Sergey Bondar" class="dropdown">Sergey Bondar</option>
-				<option value="Maxim Marasanau" class="dropdown">Maxim Marasanau</option>
-				<option value="Volha Lenkevich" class="dropdown">Volha Lenkevich</option>
-				<option value="Dmitry Minin" class="dropdown">Dmitry Minin</option>
-				<option value="Dmitry Bashlak" class="dropdown">Dmitry Bashlak</option>
-				<option value="Denis Podgorny" class="dropdown">Denis Podgorny</option>
+			<select id="teamMembers">
 			</select>
 		</span>
 	</span>
 	<span class="reportButton">
-		<input  class="button" type="button" value="Generate report" onclick="testButton(); employeesAvailability.js">
+		<input  class="button" type="button" value="Generate report" onclick="generateReport()"> <!--The button is not working yet-->
 	</span>
+	<span id="reportTable" >
+		
+	</span>
+
 </body>
 
 </html>
