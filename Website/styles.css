@@ -1,4 +1,4 @@
-span {
+option {
 	width: 200px;
 }
 
@@ -7,18 +7,10 @@ span.section {
 	font-family: Arial;
 	font-size: 20px;
 }
-option.dropdown {
-	font-family: Arial;
-	font-size: 20px;
 
-}
 
 select {
-
-	border-top-width: 0 px;
-	border-bottom-width: 0 px;
-	border-left-width: 0 px;
-	border-right-width: 0 px;
+	width: 200px;
 }
 
 input.button {
@@ -28,7 +20,33 @@ input.button {
 	font-size: 20px;
 }
 
-table {
+tr {
+	width: 400px;
+		
+} 
+tr.headerRow {
+	font-weight: bolder;
+	font-family: Arial;
+	text-align: center;
+}
+
+td {
 	width: 200px;
 	text-align: left;
+}
+
+td.available {
+	font-weight: bolder;
+	font-family: Arial;
+	color: #017413;
+}
+td.notAvailable {
+	font-weight: bolder;
+	font-family: Arial;
+	color: #bd0000;
+}
+div.errorMessage {
+	font-weight: bolder;
+	font-family: Arial;
+	color: #bd0000;
 }

@@ -15,9 +15,9 @@
     	<span>
     			<select id="teams" class="dropdown">
 					<option value="" > </option>
-					<option value="Main releases" onclick="selectTeam()">Main releases</option>
-					<option value="HTML5/IFE" onclick="selectTeam()">IFE / HTML5</option>
-					<option value="CBC" onclick="selectTeam()">CBC</option>
+					<option value="Main releases" class="dropdown" onclick="selectTeam()">Main releases</option>
+					<option value="HTML5/IFE" class="dropdown" onclick="selectTeam()">IFE / HTML5</option>
+					<option value="CBC" class="dropdown" onclick="selectTeam()">CBC</option>
 				</select>
 
 		</span>
@@ -32,11 +32,13 @@
 		</span>
 	</span>
 	<span class="reportButton">
-		<input  class="button" type="button" value="Generate report" onclick="generateReport()"> <!--The button is not working yet-->
-	</span>
-	<span id="reportTable" >
+		<input  class="button" type="button" value="Generate report" onclick="generateReport()"> 
+	<div id="report">
+		<div id="errorMessage"> </div>
+		<table id="reportTable">
+		</table>
 		
-	</span>
+	</div>
 
 </body>
 
