@@ -13,15 +13,16 @@
 			Teams
 		</span>
     	<span>
-    			<select id="teams" class="dropdown">
+    			<select id="teams" class="dropdown" onclick="selectTeam()">
 					<option value="" > </option>
-					<option value="Main releases" class="dropdown" onclick="selectTeam()">Main releases</option>
-					<option value="HTML5/IFE" class="dropdown" onclick="selectTeam()">IFE / HTML5</option>
-					<option value="CBC" class="dropdown" onclick="selectTeam()">CBC</option>
+					<option value="Main releases" class="dropdown">Main releases</option>
+					<option value="HTML5/IFE" class="dropdown">IFE / HTML5</option>
+					<option value="CBC" class="dropdown">CBC</option>
 				</select>
 
 		</span>
     </span>
+    
     <span class="members">
 		<span class="section">
 			Members
@@ -31,8 +32,10 @@
 			</select>
 		</span>
 	</span>
+	
 	<span class="reportButton">
-		<input  class="button" type="button" value="Generate report" onclick="generateReport()"> 
+		<input  class="button" type="button" value="Generate report" onclick="generateReport()">
+	</span> 
 	<div id="report">
 		<div id="errorMessage"> </div>
 		<table id="reportTable">
