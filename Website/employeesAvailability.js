@@ -34,46 +34,28 @@ var employees = [
 
 
 
-function defineGroup() { // create an array containing team members
+function populateTeamMembers() { //populate team members
     var team = document.getElementById("teams").value;
-    var group = [];
-
-    function defineTeamMembers(team) { // populate 'group' array with corresponding team members
-
-        for (var i = 0; i < employees.length; i++) {
-            if (employees[i].team === team) {
-                group.push(employees[i]);
-            }
+    var group = []; // create an array containing team members
+    for (var i = 0; i < employees.length; i++) {
+        if (employees[i].team === team) {
+            group.push(employees[i]);
         }
+    }
+    console.log(group);
 
-        console.log(group);
-
-        function populateDropdown() {
-            function cleanDropdown() { // clean previously filled 'Members' dropdown
-                var oldGroup = document.getElementById("teamMembers");
-                while (oldGroup.firstChild) {
-                    oldGroup.removeChild(oldGroup.firstChild);
-                }
-            }
-            cleanDropdown();
-
-            function populateTeamMembers() { // create lines in 'Members' dropdown and populate them with group members
-                var select = document.getElementById("teamMembers");
-                for (var i = 0; i < group.length; i++) {
-                    var option = document.createElement("option");
-                    option.text = group[i].name;
-                    option.value = group[i].name;
-                    
-                    select.appendChild(option);
-                }
-            }
-            populateTeamMembers();
-        }
-        populateDropdown();
-
+    var teamMembersDropdown = document.getElementById("teamMembers"); // clear previously filled 'Members' dropdown
+    while (teamMembersDropdown.firstChild) {
+        teamMembersDropdown.removeChild(teamMembersDropdown.firstChild);
+    }
+    
+    for (var i = 0; i < group.length; i++) { // create lines in 'Members' dropdown and populate them with group members
+        var option = document.createElement("option");
+        option.text = group[i].name;
+        option.value = group[i].name;
+        teamMembersDropdown.appendChild(option);
     }
 
-    defineTeamMembers(team);
 
     return group;
 }
@@ -82,7 +64,7 @@ function defineGroup() { // create an array containing team members
 
 function createTable() { // create a table corresponding to the selected team
     console.log("inside create table");
-    var group = defineGroup();
+    var group = populateTeamMembers();
     var table = document.getElementById("reportTable");
     for (var i = 0; i < group.length; i++) {
         var row = table.insertRow(i);
@@ -118,32 +100,22 @@ function showError(errorMessage) { // create error message
 
 
 
-function selectTeam() { // populate 'Members' dropdown
-    defineGroup();
-}
-
-
 
 function generateReport() { // show report: a table or error message
-
-    function cleanOldResult() { // erase the previously created table or error message
-        var oldTable = document.getElementById("reportTable");
-        while (oldTable.firstChild) {
-            oldTable.removeChild(oldTable.firstChild);
-        }
-        var oldError = document.getElementById("errorMessage");
-        while (oldError.firstChild) {
-            oldError.removeChild(oldError.firstChild);
-        }
+    var oldTable = document.getElementById("reportTable"); // erase the previously created table or error message
+    while (oldTable.firstChild) {
+        oldTable.removeChild(oldTable.firstChild);
     }
-    cleanOldResult();
+    var oldError = document.getElementById("errorMessage");
+    while (oldError.firstChild) {
+        oldError.removeChild(oldError.firstChild);
+    }
+   
     console.log("clean old result OK");
-    var team = document.getElementById("teams").value;
-
-    switch (team) {
+   
+    switch (document.getElementById("teams").value) {
         case "":
-            errorMessage = "Please define a team";
-            showError(errorMessage);
+            showError("Please define a team");
             break;
         case "HTML5/IFE":
         case "Main releases":
@@ -152,8 +124,7 @@ function generateReport() { // show report: a table or error message
             console.log("create table OK");
             break;
         default:
-            errorMessage = "No data found";
-            showError(errorMessage);
+            showError("No data found");
             break;
     }
 }
