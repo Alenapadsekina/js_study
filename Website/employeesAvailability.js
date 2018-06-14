@@ -33,8 +33,7 @@ var employees = [
 
 
 
-
-function populateTeamMembers() { //populate team members
+function defineTeamMembers() {     
     var team = document.getElementById("teams").value;
     var group = []; // create an array containing team members
     for (var i = 0; i < employees.length; i++) {
@@ -42,8 +41,14 @@ function populateTeamMembers() { //populate team members
             group.push(employees[i]);
         }
     }
-    console.log(group);
+    
+    return group;
+}
 
+
+
+function populateTeamMembers() { //populate team members
+    var group = defineTeamMembers();
     var teamMembersDropdown = document.getElementById("teamMembers"); // clear previously filled 'Members' dropdown
     while (teamMembersDropdown.firstChild) {
         teamMembersDropdown.removeChild(teamMembersDropdown.firstChild);
@@ -55,16 +60,12 @@ function populateTeamMembers() { //populate team members
         option.value = group[i].name;
         teamMembersDropdown.appendChild(option);
     }
-
-
-    return group;
 }
-
 
 
 function createTable() { // create a table corresponding to the selected team
     console.log("inside create table");
-    var group = populateTeamMembers();
+    var group = defineTeamMembers();
     var table = document.getElementById("reportTable");
     for (var i = 0; i < group.length; i++) {
         var row = table.insertRow(i);
