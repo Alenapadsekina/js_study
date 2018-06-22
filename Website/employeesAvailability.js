@@ -53,7 +53,11 @@ function populateTeamMembers() { //populate team members
     while (teamMembersDropdown.firstChild) {
         teamMembersDropdown.removeChild(teamMembersDropdown.firstChild);
     }
-    
+    var defaultOption = document.createElement("option");
+        defaultOption.text = " ";
+        defaultOption.value = " ";
+        teamMembersDropdown.appendChild(defaultOption);
+        
     for (var i = 0; i < group.length; i++) { // create lines in 'Members' dropdown and populate them with group members
         var option = document.createElement("option");
         option.text = group[i].name;
@@ -104,6 +108,7 @@ function createTable() { // create a table corresponding to the selected team
     headerRow.classList.add("headerRow");
 }
 
+    
 
 
 
@@ -139,9 +144,11 @@ function generateReport() { // show report: a table or error message
         case "HTML5/IFE":
         case "Main releases":
         case "CBC":
+        
             createTable();
             console.log("create table OK");
             break;
+        
         default:
             showError("No data found");
             break;
