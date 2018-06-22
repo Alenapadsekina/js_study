@@ -64,22 +64,40 @@ function populateTeamMembers() { //populate team members
 
 
 function createTable() { // create a table corresponding to the selected team
-    console.log("inside create table");
+    
     var group = defineTeamMembers();
     var table = document.getElementById("reportTable");
-    for (var i = 0; i < group.length; i++) {
+    var employee = document.getElementById("teamMembers").value;
+
+    if (employee === " ") {
+        for (var i = 0; i < group.length; i++) {
+            var row = table.insertRow(i);
+            var nameCell = row.insertCell(0);
+            var statusCell = row.insertCell(1);
+            nameCell.innerHTML = group[i].name;
+            var person = group[i].name.split(" ");
+            if (person[1].length % 2 == 0) {
+                statusCell.innerHTML = "Available";
+                statusCell.classList.add("available");
+            } else {
+                statusCell.innerHTML = "Not available";
+                statusCell.classList.add("notAvailable");
+            }
+        }
+        
+    } else {
         var row = table.insertRow(i);
         var nameCell = row.insertCell(0);
         var statusCell = row.insertCell(1);
-        nameCell.innerHTML = group[i].name;
-        var person = group[i].name.split(" ");
-        if (person[1].length % 2 == 0) {
-            statusCell.innerHTML = "Available";
-            statusCell.classList.add("available");
-        } else {
-            statusCell.innerHTML = "Not available";
-            statusCell.classList.add("notAvailable");
-        }
+            nameCell.innerHTML = employee;
+            var person = employee.split(" ");
+            if (person[1].length % 2 == 0) {
+                statusCell.innerHTML = "Available";
+                statusCell.classList.add("available");
+            } else {
+                statusCell.innerHTML = "Not available";
+                statusCell.classList.add("notAvailable");
+            }
     }
     var headerRow = table.insertRow(0);
     headerRow.innerHTML = "Employees availability";
