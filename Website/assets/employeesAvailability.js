@@ -29,84 +29,86 @@ var employees = [
     }
 ];
 
+
+
+
+
 function defineTeamMembers() {     
-	var team = document.getElementById("teams").value;
+    var team = document.getElementById("teams").value;
     var group = []; // create an array containing team members
-	for (var i = 0; i < employees.length; i++) {
+    for (var i = 0; i < employees.length; i++) {
         if (employees[i].team === team) {
             group.push(employees[i]);
         }
     }
-	
-	return group;
+    
+    return group;
 }
 
 
 
 function populateTeamMembers() { //populate team members
-	var group = defineTeamMembers();
+    var group = defineTeamMembers();
     var teamMembersDropdown = document.getElementById("teamMembers"); // clear previously filled 'Members' dropdown
     while (teamMembersDropdown.firstChild) {
         teamMembersDropdown.removeChild(teamMembersDropdown.firstChild);
     }
-    
+    var defaultOption = document.createElement("option");
+        defaultOption.text = " ";
+        defaultOption.value = " ";
+        teamMembersDropdown.appendChild(defaultOption);
+        
     for (var i = 0; i < group.length; i++) { // create lines in 'Members' dropdown and populate them with group members
         var option = document.createElement("option");
         option.text = group[i].name;
         option.value = group[i].name;
         teamMembersDropdown.appendChild(option);
     }
-
-
-    //return group;
-}
-
-function oneEmployeeAvailibility() {
-    console.log("test passed");
-    var group = defineTeamMembers();
-    var table = document.getElementById("reportTable");
-    var row = table.insertRow(0);
-    var nameCell = row.insertCell(0);
-    var statusCell = row.insertCell(1);
-    nameCell.innerHTML = group.name;
-    var person = group.name.split(" ");
-        if (person[1].length % 2 == 0) {
-            statusCell.innerHTML = "Available";
-            statusCell.classList.add("available");
-        } else {
-            statusCell.innerHTML = "Not available";
-            statusCell.classList.add("notAvailable");
-        }
-    
-    var headerRow = table.insertRow(0);
-    headerRow.innerHTML = "Employee's availability";
-    headerRow.classList.add("headerRow");
 }
 
 
 function createTable() { // create a table corresponding to the selected team
-    console.log("inside create table");
+    
     var group = defineTeamMembers();
     var table = document.getElementById("reportTable");
-    for (var i = 0; i < group.length; i++) {
+    var employee = document.getElementById("teamMembers").value;
+
+    if (employee === " ") {
+        for (var i = 0; i < group.length; i++) {
+            var row = table.insertRow(i);
+            var nameCell = row.insertCell(0);
+            var statusCell = row.insertCell(1);
+            nameCell.innerHTML = group[i].name;
+            var person = group[i].name.split(" ");
+            if (person[1].length % 2 == 0) {
+                statusCell.innerHTML = "Available";
+                statusCell.classList.add("available");
+            } else {
+                statusCell.innerHTML = "Not available";
+                statusCell.classList.add("notAvailable");
+            }
+        }
+        
+    } else {
         var row = table.insertRow(i);
         var nameCell = row.insertCell(0);
         var statusCell = row.insertCell(1);
-        nameCell.innerHTML = group[i].name;
-        var person = group[i].name.split(" ");
-        if (person[1].length % 2 == 0) {
-            statusCell.innerHTML = "Available";
-            statusCell.classList.add("available");
-        } else {
-            statusCell.innerHTML = "Not available";
-            statusCell.classList.add("notAvailable");
-        }
+            nameCell.innerHTML = employee;
+            var person = employee.split(" ");
+            if (person[1].length % 2 == 0) {
+                statusCell.innerHTML = "Available";
+                statusCell.classList.add("available");
+            } else {
+                statusCell.innerHTML = "Not available";
+                statusCell.classList.add("notAvailable");
+            }
     }
     var headerRow = table.insertRow(0);
     headerRow.innerHTML = "Employees availability";
     headerRow.classList.add("headerRow");
 }
 
+    
 
 
 
@@ -124,7 +126,7 @@ function showError(errorMessage) { // create error message
 
 
 function generateReport() { // show report: a table or error message
-	var oldTable = document.getElementById("reportTable"); // erase the previously created table or error message
+    var oldTable = document.getElementById("reportTable"); // erase the previously created table or error message
     while (oldTable.firstChild) {
         oldTable.removeChild(oldTable.firstChild);
     }
@@ -142,9 +144,11 @@ function generateReport() { // show report: a table or error message
         case "HTML5/IFE":
         case "Main releases":
         case "CBC":
+        
             createTable();
             console.log("create table OK");
             break;
+        
         default:
             showError("No data found");
             break;
