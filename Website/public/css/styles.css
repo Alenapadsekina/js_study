@@ -1,0 +1,55 @@
+option {
+	width: 200px;
+}
+
+div.section {
+	width: 200px;
+	font-family: Arial;
+	font-size: 20px;
+	display: inline;
+	float:left;
+	margin: 30px 100px 100px 30px;
+}
+
+
+select {
+	width: 200px;
+}
+
+input.button {
+	background: #b1f1ff;
+	font-weight: bolder;
+	font-family: Arial;
+	font-size: 20px;
+}
+
+tr {
+	width: 400px;
+
+}
+tr.headerRow {
+	font-weight: bolder;
+	font-family: Arial;
+	text-align: center;
+}
+
+td {
+	width: 200px;
+	text-align: left;
+}
+
+td.available {
+	font-weight: bolder;
+	font-family: Arial;
+	color: #017413;
+}
+td.notAvailable {
+	font-weight: bolder;
+	font-family: Arial;
+	color: #bd0000;
+}
+div.errorMessage {
+	font-weight: bolder;
+	font-family: Arial;
+	color: #bd0000;
+}

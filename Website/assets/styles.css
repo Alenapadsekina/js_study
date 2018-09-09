@@ -2,12 +2,16 @@ option {
 	width: 200px;
 }
 
-span.section {
+div.section {
 	width: 200px;
 	font-family: Arial;
 	font-size: 20px;
+	display: inline;
 }
+div.entryData {
 
+	display: inline;
+}
 
 select {
 	width: 200px;
@@ -22,8 +26,8 @@ input.button {
 
 tr {
 	width: 400px;
-		
-} 
+
+}
 tr.headerRow {
 	font-weight: bolder;
 	font-family: Arial;

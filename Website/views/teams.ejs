@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 4 - WT Teams</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/styles.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <!-- <script src="assets/employeesAvailability.js"></script>-->
+    <!-- <script type="text/javascript" src="teams.json"> -->
+    <!-- <script type="text/javascript" src="employees.json"> -->
+</head>
+
+<body>
+<div id="entryData">
+
+    <div id="projects" class="section">
+		    <div>
+      			Teams
+    		</div>
+
+        <div>
+	    		<select id="teams" class="dropdown" placeholder="Select a team" required/>  <!-- onchange="populateTeamMembers()"-->
+					       <% for(var i=0; i<teams.length; i++){ %>
+                   <option><%= teams[i].team %></option>
+                 <% } %>
+          </select>
+        </div>
+
+    </div>
+
+
+
+
+    <div id="members" class="section">
+    		<div>
+      			Members
+    		</div>
+      	<div>
+      			<select id="teamMembers">
+			</select>
+        </div>
+    </div>
+
+    <div id="reportButton" class = section>
+        <input  class="button" type="button" value="Generate report" onclick="generateReport()">
+    </div>
+
+</div>
+
+<div id="report">
+			<div id="errorMessage"> </div>
+			<table id="reportTable"> </table>
+</div>
+
+
+</body>
+
+</html>
