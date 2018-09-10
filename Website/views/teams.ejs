@@ -19,7 +19,7 @@
     		</div>
 
         <div>
-	    		<select id="teams" class="dropdown" placeholder="Select a team" required/>  <!-- onchange="populateTeamMembers()"-->
+	    		<select id="teams" class="dropdown" required/>  <!-- onchange="populateTeamMembers()"-->
 					       <% for(var i=0; i<teams.length; i++){ %>
                    <option><%= teams[i].team %></option>
                  <% } %>
@@ -36,7 +36,7 @@
       			Members
     		</div>
       	<div>
-      			<select id="teamMembers">
+      			<select id="teamMembers" class="dropdown">
 			</select>
         </div>
     </div>
